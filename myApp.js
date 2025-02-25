@@ -6,7 +6,7 @@ const str = "Hello Express"
 
 console.log(absolutePath);
 
-app.use(express.static(__dirname + '/public'))
+app.use("/public", express.static(__dirname + "/public"))
 
 app.get('/', (req, res) => {
     res.sendFile(absolutePath)
