@@ -12,6 +12,12 @@ console.log(path.join(__dirname, 'public'))
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
+app.use((req, res, next) => {
+    const { method, path, ip } = req;
+    console.log(`${method} ${path} - ${ip}`);
+    next();
+})
+
 app.get('/', (req, res) => {
     res.sendFile(absolutePath)
 })
