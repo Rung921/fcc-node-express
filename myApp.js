@@ -1,6 +1,7 @@
 let express = require('express');
 let path = require('path');
-let dotenv = require('dotenv').config()
+let dotenv = require('dotenv').config();
+let bodyParser = require('body-parser');
 
 let app = express();
 
@@ -46,5 +47,7 @@ app.get('/name', (req, res) => {
     const { first, last } = req.query;
     res.json({ name: `${first} ${last}`})
 })
+
+app.use('/', bodyParser.urlencoded({extended: false}));
 
  module.exports = app;
